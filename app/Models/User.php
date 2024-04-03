@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Follow;
 
 class User extends Authenticatable
 {
@@ -19,7 +20,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'email',
         'password',
     ];
 
@@ -40,6 +40,32 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+    
+    //リレーションを設定
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+    
+    // public function scopeRecommend($query, $self_id) {
+    //     return $query->where('id', '!=', $self_id)->latest()->limit(3);
+    // }
+    
+    
+    // public function follows() {
+    //     return $this->hasMany(Follow::class);
+    // }
+    
+    // public function follow_users() {
+    //     return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_id');
+    // }
+    
+    // public function followers() {
+    //     return $this->belongsToMany(User::class, 'follows', 'follow_id', 'user_id');
+    // }
+    
+    // public function isFollowing($user) {
+    //     $result = $this->follow_users->pluck('id')->contains($user->id);
+    //     return $result;
+    // }
 }

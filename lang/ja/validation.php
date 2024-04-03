@@ -84,13 +84,10 @@ return [
     ],
 
     'attributes' => [
-        'email'=>'メールアドレス',
         'password'=>'パスワード',
-        'user'=>'ユーザー名',
-        'profile'=>'プロフィール',
-        'width'=>'幅',
-        'height'=>'高さ',
-        'image'=>'写真',
+        'name'=>'ユーザー名',
+        'title'=>'タイトル',
+        'comment'=>'コメント',
     ],
 
 ];

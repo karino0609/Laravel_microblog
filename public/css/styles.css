@@ -1,0 +1,72 @@
+.header_nav {
+    display: flex;
+    list-style:none;
+    padding-left:0;
+    justify-content: space-between;
+}
+
+
+.heder_right {
+    display: inline-block;
+    text-align:rignt;
+}
+
+.header_nav li>* {
+    display: inline-block;
+    text-align:rignt;
+}
+
+
+
+/* エラーメッセージ用のスタイル */
+.error {
+    color:red;
+}
+/* 成功メッセージ用のスタイル */
+.success {
+    color:green;
+}
+
+/* 削除ボタン用のスタイル */
+.delete {
+    display:inline;
+}
+
+/* 投稿のスタイル */
+.posts {
+    padding:0;
+}
+
+ul.post {
+    padding-left: 0;
+}
+
+.post {
+    margin-top:10px;
+    margin-bottom:10px;
+    padding-top: 10px;
+    list-style:none;
+    border-top:solid 1px black;
+}
+
+.post_body_main {
+  display: flex;
+}
+
+.post_comments {
+  font-size: 13px;
+}
+
+.post_comments_header {
+  font-weight: bold;
+}
+
+.post_comments_body {
+  padding:0;
+  list-style: none;
+}
+
+/* フォロー追加ボタン */
+.follow {
+    cursor:pointer;
+}

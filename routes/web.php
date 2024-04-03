@@ -2,6 +2,16 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\PostController;
+
+use App\Http\Controllers\Request;
+
+use App\Http\Controllers\FollowController;
+
+use App\Http\Controllers\CommentController;
+
+use App\Http\Controllers\UserController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +23,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//投稿はPostController
+Route::get('/', [PostController::class, 'index']);
+
+Route::resource('posts', PostController::class);
+
+    
+//フォローはFollowController
+// Route::resource('follows', FollowController::class)->only([
+//     'index', 'store', 'destroy'
+//     ]);
+    
+// Route::get('/follower', [FollowController::class, 'followerIndex']);
+
+// Route::resource('users', UserController::class)->only([
+//   'show',
+// ]);
+
+Auth::routes();
