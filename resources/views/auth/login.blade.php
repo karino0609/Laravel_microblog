@@ -20,5 +20,5 @@
      </div><br>
      
      <input type="submit" value="ログイン">
- </form>
+ </form><br>
 @endsection

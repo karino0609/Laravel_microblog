@@ -30,14 +30,14 @@ Route::resource('posts', PostController::class);
 
     
 //フォローはFollowController
-// Route::resource('follows', FollowController::class)->only([
-//     'index', 'store', 'destroy'
-//     ]);
+Route::resource('follows', FollowController::class)->only([
+    'index', 'store', 'destroy'
+    ]);
     
 // Route::get('/follower', [FollowController::class, 'followerIndex']);
 
-// Route::resource('users', UserController::class)->only([
-//   'show',
-// ]);
+Route::resource('users', UserController::class)->only([
+  'show', 
+]);
 
 Auth::routes();

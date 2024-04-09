@@ -16,13 +16,12 @@ class PostController extends Controller
     public function index()
     {
         $user = \Auth::user();
-        //$follow_user_ids = $user->follow_users->pluck('id');
-        //$user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids)->latest()->paginate(3);
-        $user_posts = $user->posts()->latest()->get();
+        $follow_user_ids = $user->follow_users->pluck('id');
+        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids)->latest()->get();
         return view('posts.index', [
             'title'=>'投稿一覧',
             'posts' => $user_posts,
-            //'recommended_users' => User::recommend($user->id)->get()
+            'recommended_users' => User::recommend($user->id)->get()
             ]);
     }
 

@@ -70,3 +70,7 @@ ul.post {
 .follow {
     cursor:pointer;
 }
+
+.container {
+    background-color:lavender;
+}

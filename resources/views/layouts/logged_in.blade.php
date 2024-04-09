@@ -5,7 +5,7 @@
     <ul class="header_nav">
         <li>
           <a href="{{ route('posts.index') }}">
-          Latteの記録
+          ペットの記録
           </a>
         </li>
         <li>
