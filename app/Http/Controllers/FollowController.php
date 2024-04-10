@@ -66,7 +66,7 @@ class FollowController extends Controller
     // フォロー削除
     public function destroy($id)
     {
-        $follow = \Auth::user()->follows->where('folllow_id', $id)->first();
+        $follow = \Auth::user()->follows->where('follow_id', $id)->first();
         $follow->delete();
         \Session::flash('success', 'フォロー解除しました');
         return redirect()->route('posts.index');

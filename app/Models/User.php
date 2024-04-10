@@ -47,25 +47,26 @@ class User extends Authenticatable
         return $this->hasMany(Post::class);
     }
     
-    // public function scopeRecommend($query, $self_id) {
-    //     return $query->where('id', '!=', $self_id)->latest()->limit(3);
-    // }
+    public function scopeRecommend($query, $self_id) {
+        $follow_ids = User::find($self_id)->follow_users->pluck('id');
+        return $query->where('id', '!=', $self_id)->whereNotIn('id', $follow_ids)->latest()->limit(3);
+    }
     
     
-    // public function follows() {
-    //     return $this->hasMany(Follow::class);
-    // }
+    public function follows() {
+        return $this->hasMany(Follow::class);
+    }
     
-    // public function follow_users() {
-    //     return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_id');
-    // }
+    public function follow_users() {
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_id');
+    }
     
     // public function followers() {
     //     return $this->belongsToMany(User::class, 'follows', 'follow_id', 'user_id');
     // }
     
-    // public function isFollowing($user) {
-    //     $result = $this->follow_users->pluck('id')->contains($user->id);
-    //     return $result;
-    // }
+    public function isFollowing($user) {
+        $result = $this->follow_users->pluck('id')->contains($user->id);
+        return $result;
+    }
 }
