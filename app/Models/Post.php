@@ -21,6 +21,15 @@ class Post extends Model
     
     
     protected $fillable = ['user_id', 'comment'];
+    
+    
+    public function scopeSearch($query, $keyword) {
+        return $query->where('user_id', '!=', \Auth::id())
+                     ->where('comment', 'like', '%'.$keyword.'%')
+                     ->latest();
+                    
+    }
 }
 
+    
 

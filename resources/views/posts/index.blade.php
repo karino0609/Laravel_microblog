@@ -5,7 +5,12 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-
+<form>
+<input type="text" name="your_key" placeholder="キーワード" value="{{ $keyword }}">
+ <input type="submit" value="検索">
+</form>
+<br>
+★おすすめユーザー★
 <ul class="recommended_users">
     @forelse($recommended_users as $recommended_user)
     <li>
@@ -31,7 +36,7 @@
 
 <ul class="post">
     @forelse($posts as $post)
-    <li class="post">
+    <li>
         <div class="post_content">
             <div class="post_body">
                 {!! nl2br(e($post->comment)) !!}

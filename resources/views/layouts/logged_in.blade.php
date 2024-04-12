@@ -5,11 +5,16 @@
     <ul class="header_nav">
         <li>
           <a href="{{ route('posts.index') }}">
-          ペットの記録
+          ペットたちの記録
           </a>
         </li>
         <li>
          <p>こんにちは、{{ Auth::user()->name }}さん！</p>
+        </li>
+        <li>
+          <a href="{{ route('follows.index') }}">
+            フォローユーザー一覧
+          </a>
         </li>
         <div class="header_right">
         <li>
@@ -17,6 +22,7 @@
           新規投稿
           </a>
         </li>
+        <br>
         <li>
           <form action="{{ route('logout') }}" method="POST">
             @csrf
@@ -25,8 +31,5 @@
         </li>
         </div>
     </ul>
-@if( Auth::check() )
-    {{ Auth::user()->name }}
-@endif
 </header>
 @endsection

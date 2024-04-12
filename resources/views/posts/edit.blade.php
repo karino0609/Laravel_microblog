@@ -6,7 +6,8 @@
 <h1>{{ $title }}</h1>
 
 <a href="{{ url('/posts') }}">一覧に戻る</a>
-
+<br>
+<br>
 <form method="post" action="{{ route('posts.update', $post->id) }}">
     @csrf
     @method('patch')
@@ -16,8 +17,10 @@
         </label>
     </div>
     <div>
+<br>
         <input type="submit" value="更新">
     </div>
+    <br>
 </form>
 
 @endsection

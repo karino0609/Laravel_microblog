@@ -7,6 +7,7 @@
 
 <a href="{{ url('/posts') }}">一覧に戻る</a>
 <br>
+<br>
 <form method="post" action="{{ route('posts.store') }}">
     @csrf
     <div>
@@ -15,8 +16,10 @@
         </label>
     </div>
     <div>
+        <br>
         <input type="submit" value="保存">
     </div>
+    <br>
 </form>
 
 @endsection
