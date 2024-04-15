@@ -13,12 +13,17 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $user = \Auth::user();
-        $follow_user_ids = $user->follow_users->pluck('id');
-        $user_posts = $user->posts()->orWhereIn('user_id', $follow_user_ids)->latest()->get();
+        $keyword = $request->input('your_key');
+        if(empty($keyword)) {
+            $user_posts = $user->posts(true)->get();
+        } else {
+            $user_posts = Post::search($keyword)->get();
+        }
         return view('posts.index', [
+            'keyword'=>$keyword,
             'title'=>'投稿一覧',
             'posts' => $user_posts,
             'recommended_users' => User::recommend($user->id)->get()

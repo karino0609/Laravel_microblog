@@ -5,19 +5,24 @@
 @section('content')
 <h1>{{ $title }}</h1>
 
-
+<form>
+<input type="text" name="your_key" placeholder="キーワード" value="{{ $keyword }}">
+ <input type="submit" value="検索">
+</form>
+<br>
+★おすすめユーザー★
 <ul class="recommended_users">
     @forelse($recommended_users as $recommended_user)
     <li>
         <a href="{{ route('users.show', $recommended_user) }}">{{ $recommended_user->name }}</a>
         @if(Auth::user()->isFollowing($recommended_user))
-        <form method="post" action="{{ secure_url(route('follows.destroy', $recommended_user)) }}" class="follow">
+        <form method="post" action="{{ route('follows.destroy', $recommended_user) }}" class="follow">
             @csrf
             @method('delete')
             <input type="submit" value="フォロー解除">
         </form>
         @else
-        <form method="post" action="{{ secure_url(route('follows.store')) }}" class="follow">
+        <form method="post" action="{{ route('follows.store') }}" class="follow">
             @csrf
             <input type="hidden" name="follow_id" value="{{ $recommended_user->id }}">
             <input type="submit" value="フォロー">
@@ -31,7 +36,7 @@
 
 <ul class="post">
     @forelse($posts as $post)
-    <li class="post">
+    <li>
         <div class="post_content">
             <div class="post_body">
                 {!! nl2br(e($post->comment)) !!}
