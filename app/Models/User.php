@@ -43,9 +43,13 @@ class User extends Authenticatable
     ];
     
     //リレーションを設定
-    public function posts() {
-        $follow_user_ids = $this->follow_users->pluck('id');
-        return $this->hasMany(Post::class)->orWhereIn('user_id', $follow_user_ids)->latest();
+    public function posts($with_follows = false) {
+        if($with_follows) {
+            $follow_user_ids = $this->follow_users->pluck('id');
+            return $this->hasMany(Post::class)->orWhereIn('user_id', $follow_user_ids)->latest();
+        }else {
+            return $this->hasMany(Post::class)->latest();
+        }
     }
     
     public function scopeRecommend($query, $self_id) {

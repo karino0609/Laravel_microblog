@@ -18,7 +18,7 @@ class PostController extends Controller
         $user = \Auth::user();
         $keyword = $request->input('your_key');
         if(empty($keyword)) {
-            $user_posts = $user->posts()->get();
+            $user_posts = $user->posts(true)->get();
         } else {
             $user_posts = Post::search($keyword)->get();
         }

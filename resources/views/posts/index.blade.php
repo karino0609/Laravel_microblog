@@ -16,13 +16,13 @@
     <li>
         <a href="{{ route('users.show', $recommended_user) }}">{{ $recommended_user->name }}</a>
         @if(Auth::user()->isFollowing($recommended_user))
-        <form method="post" action="{{ secure_url(route('follows.destroy', $recommended_user)) }}" class="follow">
+        <form method="post" action="{{ route('follows.destroy', $recommended_user) }}" class="follow">
             @csrf
             @method('delete')
             <input type="submit" value="フォロー解除">
         </form>
         @else
-        <form method="post" action="{{ secure_url(route('follows.store')) }}" class="follow">
+        <form method="post" action="{{ route('follows.store') }}" class="follow">
             @csrf
             <input type="hidden" name="follow_id" value="{{ $recommended_user->id }}">
             <input type="submit" value="フォロー">
