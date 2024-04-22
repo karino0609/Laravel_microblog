@@ -37,7 +37,7 @@ Route::resource('follows', FollowController::class)->only([
 // Route::get('/follower', [FollowController::class, 'followerIndex']);
 
 Route::resource('users', UserController::class)->only([
-  'show', 
+  'show', 'update', 'edit'
 ]);
 
 Auth::routes();
