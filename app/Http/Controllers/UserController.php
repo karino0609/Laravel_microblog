@@ -45,7 +45,25 @@ class UserController extends Controller
         'user' => $user,
          ]);
     }
-
+    
+    public function edit($id) {
+        // $user = \Auth::user();
+        $user = User::find($id);
+        return view('users.edit',[
+            'title'=>'プロフィール編集',
+            'user'=>$user,
+        ]);
+    }
+    
+    public function update(UserRequest $request, $id) {
+        // $user = \Auth::user();
+        $user = User::find($id);
+        $user->update($request->only(['name', 'profile']));
+        
+        session()->flash('success', 'プロフィールを変更しました');
+        return redirect()->route('users.show', $user);
+    }
+    
     /**
      * Show the form for editing the specified resource.
      */

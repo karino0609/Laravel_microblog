@@ -12,7 +12,7 @@
     @csrf
     <div>
         <label>
-            <textarea name="comment" cols="40" rows="2" class="comment_field" placeholder="コメントを入力"></textarea>
+            <textarea name="comment" cols="40" rows="3" class="comment_field" placeholder="コメントを入力"></textarea>
         </label>
     </div>
     <div>

@@ -77,3 +77,8 @@ a {
 .container {
     background-color:lavender;
 }
+
+ul {
+    list-style:none;
+    padding-left:0;
+}

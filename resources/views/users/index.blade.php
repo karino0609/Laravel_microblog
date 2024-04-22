@@ -21,6 +21,19 @@
 </form>
 @endif
 <br>
+    <dt>プロフィール紹介</dt>
+    <dd>
+      @if(empty($user->profile))
+        プロフィール紹介はありません。
+      @else
+        {{ $user->profile }}
+        @if ($user->id == Auth::id())
+          [<a href="{{ route('users.edit', $user) }}">編集</a>]
+        @endif
+      @endif
+    </dd>
+<br>
+    </dd>
     <dt>投稿一覧</dt>
     <dd>
       <ul class="post">

@@ -12,6 +12,11 @@
          <p>こんにちは、{{ Auth::user()->name }}さん！</p>
         </li>
         <li>
+          <a href="{{ route('users.show', Auth::id()) }}">
+            プロフィール
+          </a>
+        </li>
+        <li>
           <a href="{{ route('follows.index') }}">
             フォローユーザー一覧
           </a>

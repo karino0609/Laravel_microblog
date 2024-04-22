@@ -28,6 +28,6 @@
      
      <div>
          <input type="submit" value="登録">
-     </div>
+     </div><br>
  </form>
 @endsection
