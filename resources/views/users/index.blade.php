@@ -27,9 +27,9 @@
         プロフィール紹介はありません。
       @else
         {{ $user->profile }}
+      @endif
         @if ($user->id == Auth::id())
           [<a href="{{ route('users.edit', $user) }}">編集</a>]
-        @endif
       @endif
     </dd>
 <br>
